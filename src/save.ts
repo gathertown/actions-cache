@@ -34,7 +34,8 @@ async function saveCache() {
         secretKey: core.getState(State.SecretKey),
         sessionToken: core.getState(State.SessionToken),
       });
-
+      // @ts-expect-error
+      mc.traceOn();
       const compressionMethod = await utils.getCompressionMethod();
       const cachePaths = await utils.resolvePaths(paths);
       core.debug("Cache Paths:");

@@ -33,7 +33,8 @@ async function restoreCache() {
       core.saveState(State.SessionToken, core.getInput("sessionToken"));
 
       const mc = newMinio();
-
+      // @ts-expect-error
+      mc.traceOn();
       const compressionMethod = await utils.getCompressionMethod();
       const cacheFileName = utils.getCacheFileName(compressionMethod);
       const archivePath = path.join(
